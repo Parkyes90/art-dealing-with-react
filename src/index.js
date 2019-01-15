@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './containers/App';
+import './styles/main.scss'
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 // import { createStore } from "redux";
@@ -14,7 +14,7 @@ import * as serviceWorker from './serviceWorker';
 // );
 
 ReactDOM.render(
-  <div>test</div>,
+  <App />,
   document.getElementById('root')
 );
 
