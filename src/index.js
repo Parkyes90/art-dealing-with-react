@@ -1,18 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/main.scss'
-import App from './components/App';
+import './styles/main.scss';
+import Root from './Root';
 import * as serviceWorker from './serviceWorker';
 
-import modules from './modules';
-import { createStore } from "redux";
-import { Provider } from "react-redux";
 
-const store = createStore(
-  modules,
-  window.__REDUX_DEVTOOLS_EXTENSION__
-  && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 // import { createStore } from "redux";
 // import reducers from './reducers';
 // import { Provider } from 'react-redux';
@@ -23,10 +15,7 @@ const store = createStore(
 // );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-  ,
+  <Root />,
   document.getElementById('root')
 );
 
