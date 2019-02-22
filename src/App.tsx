@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Header, About } from "./components";
+import { Header } from "./components";
 
-const App: React.FC<{}> = () => {
+const App: React.FC<{}> = (props) => {
   return (
     <div className="container-fluid">
       <Header />
-      <About />
+       {props.children}
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { MemberEntity } from '../../model';
 import { memberAPI } from '../../api/Member';
+import { MemberHeader } from './memberHeader';
+import { MemberRow } from './memberRow';
 
 interface State {
   members: MemberEntity[];
 }
 
-interface Props {
-}
 
-export class MembersPage extends React.Component<Props, State> {
-  state = { members: [] };
+export class MembersPage extends React.Component<{}, State> {
+  public state: any = { members: [] };
 
   public componentDidMount() {
     memberAPI.fetchMembers()
@@ -19,16 +19,26 @@ export class MembersPage extends React.Component<Props, State> {
       });
   }
 
+
   public render() {
     return (
       <div className="row">
         <h2> Members Page</h2>
         <table className="table">
           <thead>
-            {MemberHeader()}
+          <MemberHeader />
           </thead>
           <tbody>
-            {this.state.members.map(MemberRow)}
+          {
+            this.state.members.map((member: any) => (
+                <MemberRow
+                  key={member.id}
+                  // key={member.id}
+                  member={member}
+                />
+              )
+            )
+          }
           </tbody>
         </table>
       </div>
@@ -36,28 +46,3 @@ export class MembersPage extends React.Component<Props, State> {
   }
 }
 
-const MemberHeader = () => {
-  return (
-    <tr>
-      <th>Avatar</th>
-      <th>Id</th>
-      <th>Name</th>
-    </tr>
-  );
-};
-
-const MemberRow = (member: MemberEntity) => {
-  return (
-    <tr key={member.id}>
-      <td>
-        <img src={member.avatar_url} className="avatar" />
-      </td>
-      <td>
-        <span>{member.id}</span>
-      </td>
-      <td>
-        <span>{member.login}</span>
-      </td>
-    </tr>
-  )
-};
