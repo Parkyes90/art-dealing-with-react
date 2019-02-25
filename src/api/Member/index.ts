@@ -55,9 +55,24 @@ const insertMember = (member: MemberEntity) => {
   ];
 };
 
+const fetchMemberById = (id: number): Promise<MemberEntity> => {
+  const index: number = mockMembers.findIndex(m => m.id === id);
+  const member: MemberEntity = index >= 0 ?
+    mockMembers[index]
+    :
+    {
+      id: -1,
+      login: '',
+      avatar_url: '',
+    };
+
+  return Promise.resolve(member);
+};
+
 
 export const memberAPI = {
   fetchMembers,
   fetchMembersAsync,
-  saveMember
+  saveMember,
+  fetchMemberById
 };

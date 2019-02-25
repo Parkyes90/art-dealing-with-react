@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { MemberEntity } from '../../model';
+import { MemberEntity, MemberErrors } from '../../model';
 import { Input } from '../Input';
 import { Button } from '../Button';
 
 interface Props {
   member: MemberEntity;
+   memberErrors: MemberErrors;
   onChange: (fieldName: string, value: string) => void;
   onSave: () => void;
 }
@@ -18,6 +19,11 @@ export const MemberForm: React.FC<Props> = (props) => {
         label="Login"
         value={props.member.login}
         onChange={props.onChange}
+        error={
+          props.memberErrors.login.succeeded ?
+            '' :
+            props.memberErrors.login.errorMessage
+        }
       />
       <Input
         name="avatar_url"
