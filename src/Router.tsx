@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import App from './App';
-import { About, MembersPage } from './components';
+import { About, MembersPage, MemberPageContainer } from './components';
 
 const Router: React.FC<{}> = () => {
   return (
@@ -11,7 +11,8 @@ const Router: React.FC<{}> = () => {
         <Switch>
           <Route exact path="/" component={About} />
           <Route path="/about" component={About} />
-           <Route path="/members" component={MembersPage} />
+          <Route path="/members" component={MembersPage} />
+          <Route path="/member" component={MemberPageContainer} />
         </Switch>
       </div>
     </HashRouter>

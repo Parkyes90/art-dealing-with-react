@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { MemberEntity } from '../../model';
 import { memberAPI } from '../../api/Member';
 import { MemberHeader } from './memberHeader';
@@ -24,6 +25,7 @@ export class MembersPage extends React.Component<{}, State> {
     return (
       <div className="row">
         <h2> Members Page</h2>
+         <Link to="/member">New Member</Link>
         <table className="table">
           <thead>
           <MemberHeader />

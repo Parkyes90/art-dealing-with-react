@@ -2,6 +2,7 @@ import { MemberEntity } from '../../model';
 import { members } from './mockData';
 
 const baseURL = 'https://api.github.com/orgs/lemoncode';
+let mockMembers = members;
 
 const fetchMembers = (): Promise<MemberEntity[]> => {
   return Promise.resolve(members);
@@ -27,7 +28,36 @@ const mapToMember = (githubMember: any): MemberEntity => {
   };
 };
 
+const saveMember = (member: MemberEntity): Promise<boolean> => {
+  const index = mockMembers.findIndex(m => m.id === member.id);
+
+  index >= 0 ?
+    updateMember(member, index) :
+    insertMember(member);
+
+  return Promise.resolve(true);
+};
+
+const updateMember = (member: MemberEntity, index: number) => {
+  mockMembers = [
+    ...mockMembers.slice(0, index),
+    member,
+    ...mockMembers.slice(index + 1),
+  ];
+};
+
+const insertMember = (member: MemberEntity) => {
+  member.id = mockMembers.length;
+
+  mockMembers = [
+    ...mockMembers,
+    member,
+  ];
+};
+
+
 export const memberAPI = {
   fetchMembers,
-  fetchMembersAsync
+  fetchMembersAsync,
+  saveMember
 };

@@ -8,11 +8,14 @@
     "@types/react": "16.8.4",
     "@types/react-dom": "16.8.2",
     "@types/react-router-dom": "^4.3.1",
+    "@types/toastr": "^2.1.36",
     "bootstrap": "^4.1.1",
+    "lc-form-validation": "^2.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "toastr": "^2.1.4",
     "typescript": "3.3.3333"
   },
   "scripts": {
